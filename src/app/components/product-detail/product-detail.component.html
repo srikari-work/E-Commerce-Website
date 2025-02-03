@@ -1,0 +1,9 @@
+<div class="product-detail-container" *ngIf="product">
+    <h2>{{ product.title }}</h2>
+    <img [src]="product.image" alt="{{ product.title }}" class="detail-image">
+    <p class="category-tag"><span class="category">{{ product.category }}</span></p>
+    <p><strong>Price:</strong> $ {{ product.price }}</p>
+    <p><strong>Description:</strong> {{ product.description }}</p>
+    <button mat-button color="primary" routerLink="/products">Back to Products</button>
+</div>
+  

@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+    <span>BestBuy</span>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/products">Products</a>
+    <a mat-button routerLink="/cart">
+      Cart <span *ngIf="(cartItemCount$ | async) as count">({{ count }})</span> <!--*ngIf: conditionally adds or removes elements from the DOM-->
+    </a>
+</mat-toolbar>

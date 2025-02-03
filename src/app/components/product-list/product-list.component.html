@@ -1,0 +1,16 @@
+<div class="product-list-container">
+  <div class="product-grid">
+    <mat-card *ngFor="let product of displayedProducts" class="product-card">
+      <img mat-card-image [src]="product.image" alt="{{ product.title }}"  class="product-image" (click)="viewProductDetails(product)">
+      <h3>{{ product.title }}</h3>
+      <p class="price">$ {{ product.price }}</p>
+      <p class="category-tag"><span class="category">{{ product.category }}</span></p>
+      <div>
+        <button mat-button color="primary" (click)="addToCart(product)">Add to Cart</button>
+        <button mat-button color="primary" (click)="viewProductDetails(product)">View Details</button>
+      </div>
+    </mat-card>
+  </div>
+  <mat-paginator [length]="totalProducts" [pageSize]="pageSize" [pageSizeOptions]="[4, 8, 12, 16]" (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
