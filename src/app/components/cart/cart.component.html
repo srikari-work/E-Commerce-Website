@@ -1,5 +1,5 @@
 <div class="cart-container container-fluid">
-  <h2>Your Shopping Cart</h2>
+  <h1><strong>YOUR SHOPPING CART</strong></h1>
   <div *ngIf="cartItems.length === 0">
     <p>Your cart is empty.</p>
     <a routerLink="/products">Go to Products</a>
@@ -31,6 +31,7 @@
     </table>
     <div class="total">
       <h3>Total: $ {{ getTotal() | number:'1.2-2' }}</h3>
+      <button class="button-primary" (click)="proceedToCheckout()">Checkout</button>
     </div>
   </div>
 </div>

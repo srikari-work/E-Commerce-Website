@@ -1,8 +1,16 @@
 <div class="product-list-container">
+  <div class="filter-container">
+    <input type="text" placeholder="Search products..." [(ngModel)]="searchText" (input)="applyFilters()" />
+  
+    <select [(ngModel)]="selectedCategory" (change)="applyFilters()">
+      <option value="">All Categories</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
   <div class="product-grid">
-    <mat-card *ngFor="let product of displayedProducts" class="product-card">
+    <mat-card *ngFor="let product of filteredProducts" class="product-card">
       <img mat-card-image [src]="product.image" alt="{{ product.title }}"  class="product-image" (click)="viewProductDetails(product)">
-      <h3>{{ product.title }}</h3>
+      <p>{{ product.title.slice(0, 30) }}...</p>
       <p class="price">$ {{ product.price }}</p>
       <p class="category-tag"><span class="category">{{ product.category }}</span></p>
       <div>

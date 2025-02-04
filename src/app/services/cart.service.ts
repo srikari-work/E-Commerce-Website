@@ -22,6 +22,10 @@ export class CartService {
     return this.cartSubject.asObservable();
   }
 
+  getCartSnapshot(): CartItem[] {
+    return [...this.cartItems]; //returns a copy to prevent direct modification
+  }
+
   addToCart(product: Product) {
     const item = this.cartItems.find(i => i.product.id === product.id);
     if (item) {

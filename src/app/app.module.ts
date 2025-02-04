@@ -11,8 +11,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     ProductListComponent,
     CartComponent,
     ProductDetailComponent,
+    CheckoutComponent,
+    OrderConfirmationComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,9 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     MatButtonModule,
     MatPaginatorModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

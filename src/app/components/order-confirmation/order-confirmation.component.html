@@ -1,0 +1,32 @@
+<div class="order-confirmation-container">
+    <h1><strong>ORDER CONFIRMATION</strong></h1>
+    <div *ngIf="order.items.length === 0">
+        <p>You have not places any order!</p>
+    </div>
+    <div *ngIf="order.items.length > 0">
+        <p>Thank you, <strong>{{ order.name }}</strong>!</p>
+        <p>Your order will be shipped to: <strong>{{ order.address }}</strong></p>
+        <h3>Order Summary</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of order.items">
+                    <td>{{ item.product.title }}</td>
+                    <td>$ {{ item.product.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>$ {{ (item.product.price * item.quantity) | number:'1.2-2' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <p class="total"><strong>Total Price: ${{ order.totalPrice }}</strong></p>
+    </div>
+    <a routerLink="/products">Continue Shopping!</a>
+</div>
