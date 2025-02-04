@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../models/cart-item';
+import { Product } from 'src/app/models/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +12,7 @@ import { CartItem } from '../../models/cart-item';
 export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private router: Router) { }
   //subscribes to the cartService.getCartItems() observable to updates cartItems whenever the cart is modified
   ngOnInit(): void {
     this.cartService.getCartItems().subscribe(items => {
@@ -33,6 +35,7 @@ export class CartComponent implements OnInit {
     return this.cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0);
   }
 
+  
   onQuantityChange(event: Event, productId: number) {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement) {
@@ -40,5 +43,10 @@ export class CartComponent implements OnInit {
       this.updateQuantity(productId, newQuantity);
     }
   }
+
+  viewProductDetails(product: Product) {
+    this.router.navigate(['/products', product.id]);
+  }
+  
   
 }

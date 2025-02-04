@@ -1,4 +1,4 @@
-<div class="cart-container">
+<div class="cart-container container-fluid">
   <h2>Your Shopping Cart</h2>
   <div *ngIf="cartItems.length === 0">
     <p>Your cart is empty.</p>
@@ -17,7 +17,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of cartItems">
-          <td>{{ item.product.title }}</td>
+          <td class="title" (click)="viewProductDetails(item.product)">{{ item.product.title }}</td>
           <td>$ {{ item.product.price }}</td>
           <td>
             <input type="number" [value]="item.quantity" min="1" (change)="onQuantityChange($event, item.product.id)">
